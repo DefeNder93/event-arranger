@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$primary-padding: 12px;
+$primary-margin: 16px;
+
+.EA-FormButtons {
+  padding: $primary-padding;
+
+  button:not(:first-child) {
+    margin-left: $primary-margin;
+  }
+}
+
