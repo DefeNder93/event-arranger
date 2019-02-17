@@ -1,10 +1,10 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="userForm" (ngSubmit)="submit()">
   <div>
     <mat-form-field>
       <input matInput placeholder="First Name" formControlName="firstName">
       <mat-error *ngIf="invalid('firstName')">
-        <app-required-msg name="First Name" field="firstName" [form]="form"></app-required-msg>
-        <app-maxlength-msg name="First Name" field="firstName" maxlength="30" [form]="form"></app-maxlength-msg>
+        <app-required-msg name="First Name" field="firstName" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="First Name" field="firstName" maxlength="30" [form]="userForm"></app-maxlength-msg>
       </mat-error>
     </mat-form-field>
   </div>
@@ -12,8 +12,8 @@
     <mat-form-field>
       <input matInput placeholder="Last Name" formControlName="lastName">
       <mat-error *ngIf="invalid('lastName')">
-        <app-required-msg name="Last Name" field="lastName" [form]="form"></app-required-msg>
-        <app-maxlength-msg name="Last Name" field="lastName" maxlength="30" [form]="form"></app-maxlength-msg>
+        <app-required-msg name="Last Name" field="lastName" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="Last Name" field="lastName" maxlength="30" [form]="userForm"></app-maxlength-msg>
       </mat-error>
     </mat-form-field>
   </div>
@@ -21,8 +21,8 @@
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email">
       <mat-error *ngIf="invalid('email')">
-        <app-invalid-email-msg [form]="form"></app-invalid-email-msg>
-        <app-maxlength-msg name="Email" field="email" maxlength="20" [form]="form"></app-maxlength-msg>
+        <app-invalid-email-msg [form]="userForm"></app-invalid-email-msg>
+        <app-maxlength-msg name="Email" field="email" maxlength="20" [form]="userForm"></app-maxlength-msg>
       </mat-error>
     </mat-form-field>
   </div>
@@ -30,8 +30,8 @@
     <mat-form-field>
       <input matInput placeholder="Password" type="password" formControlName="password">
       <mat-error *ngIf="invalid('password')">
-        <app-required-msg name="Password" field="password" [form]="form"></app-required-msg>
-        <app-maxlength-msg name="Password" field="password" maxlength="20" [form]="form"></app-maxlength-msg>
+        <app-required-msg name="Password" field="password" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="Password" field="password" maxlength="20" [form]="userForm"></app-maxlength-msg>
       </mat-error>
     </mat-form-field>
   </div>
