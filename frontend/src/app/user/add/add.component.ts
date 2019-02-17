@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {select, Store} from "@ngrx/store";
 import {take} from "rxjs/operators";
-import {ActionUserReset, ActionUserUpdate} from "../user.actions";
+import {ActionAddReset, ActionAddUpdate} from "./add.actions";
 import {State} from "../user.state";
-import {selectUserState} from "../user.selectors";
+import {selectUserState} from "./add.selectors";
 
 @Component({
   selector: 'app-add',
@@ -34,14 +34,14 @@ export class AddComponent implements OnInit {
       .subscribe(state => this.userForm.patchValue(state.user));
   }
 
-  submit = () => {
-    this.store.dispatch(new ActionUserUpdate({user: this.userForm.value}))
+  add = () => {
+    this.store.dispatch(new ActionAddUpdate({user: this.userForm.value})) // saves the form when add switches between tabs
   };
 
   reset = () => {
     this.userForm.reset();
     this.userForm.clearValidators();
-    this.store.dispatch(new ActionUserReset());
+    this.store.dispatch(new ActionAddReset());
   };
 
   invalid = (field: string) => this.userForm.get(field).invalid;

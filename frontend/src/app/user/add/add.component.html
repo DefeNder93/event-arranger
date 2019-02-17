@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="submit()">
+<form [formGroup]="userForm" (ngSubmit)="add()">
   <div>
     <mat-form-field>
       <input matInput placeholder="First Name" formControlName="firstName">
@@ -36,7 +36,7 @@
     </mat-form-field>
   </div>
   <div class="EA-FormButtons">
-    <button type="submit" mat-raised-button color="accent">Save</button>
+    <button type="submit" mat-raised-button color="accent">Add</button>
     <button type="reset" mat-raised-button (click)="reset()">Reset</button>
   </div>
 </form>
