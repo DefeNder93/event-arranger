@@ -12,3 +12,19 @@ $primary-margin: 16px;
   }
 }
 
+.mat-raised-button.EA-MR, .EA-MR {
+  margin-right: $primary-margin;
+}
+
+.mat-raised-button.EA-ML, .EA-ML {
+  margin-left: $primary-margin;
+}
+
+.mat-raised-button.EA-MB, .EA-MB {
+  margin-bottom: $primary-margin;
+}
+
+.mat-raised-button.EA-MT, .EA-MT {
+  margin-top: $primary-margin;
+}
+

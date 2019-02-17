@@ -1,4 +1,7 @@
+import {EntityState} from "@ngrx/entity";
+
 export interface User {
+  id: string;
   firstName: string;
   lastName: string;
   password: string;
@@ -8,3 +11,5 @@ export interface User {
 export interface AddState {
   user: User;
 }
+
+export interface UserState extends EntityState<User> {}

@@ -1,18 +1,21 @@
 import {ActionReducerMap, createFeatureSelector} from '@ngrx/store';
-import {addReducer} from "./add/add.reducer";
+import {addReducer} from "./components/add/add.reducer";
 import {AppState} from "../reducers";
-import {AddState} from "./models/user.model";
+import {AddState, UserState} from "./models/user.model";
+import {userReducer} from "./components/user/user.reducer";
 
 export const FEATURE_NAME = 'user';
 export const selectUser = createFeatureSelector<State, UserFeatureState>(
   FEATURE_NAME
 );
 export const reducers: ActionReducerMap<UserFeatureState> = {
-  add: addReducer
+  add: addReducer,
+  users: userReducer
 };
 
 export interface UserFeatureState {
   add: AddState;
+  users: UserState
 }
 
 export interface State extends AppState {

@@ -1,4 +1,4 @@
-import {User, AddState} from "../models/user.model";
+import {User, AddState} from "../../models/user.model";
 import {AddActions, AddActionTypes} from "./add.actions";
 
 
