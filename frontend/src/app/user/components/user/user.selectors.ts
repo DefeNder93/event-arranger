@@ -12,3 +12,8 @@ export const selectUsers = createSelector(
 );
 
 export const selectAllUsers = createSelector(selectUsers, selectAll);
+
+export const selectEditingIds = createSelector(
+  selectUser,
+  (state: UserFeatureState) => state.users.editing_ids
+);

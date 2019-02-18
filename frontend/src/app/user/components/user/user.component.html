@@ -1,10 +1,22 @@
 <mat-list>
   <h3 mat-subheader>Users</h3>
-  <mat-list-item *ngFor="let user of users$ | async">
-    <mat-icon mat-list-icon>perm_identity</mat-icon>
-    <h4 mat-line>{{user.firstName}}</h4>
 
-    <!--<button class="EA-MR" type="button" mat-raised-button>Edit</button>-->
+  <mat-list-item *ngFor="let user of userRows$ | async">
+    <mat-icon mat-list-icon>perm_identity</mat-icon>
+    <h4 *ngIf="!user.editing"  mat-line>{{user.firstName}}</h4>
+
+    <form *ngIf="user.editing" [formGroup]="user.editForm">
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+      </div>
+    </form>
+
+    <button *ngIf="user.editing" class="EA-MR" (click)="save(user)" type="button" mat-raised-button>Save</button>
+    <button *ngIf="!user.editing" class="EA-MR" (click)="startEditing(user)" type="button" mat-raised-button>Edit</button>
+    <button *ngIf="user.editing" class="EA-MR" (click)="cancelEditing(user)" type="button" mat-raised-button>Cancel</button>
+
     <button type="button" (click)="delete(user)" mat-raised-button>Remove</button>
   </mat-list-item>
 </mat-list>
