@@ -1,6 +1,10 @@
 <mat-list>
   <h3 mat-subheader>Users</h3>
 
+  <mat-form-field>
+    <input matInput placeholder="Search" [formControl]="search">
+  </mat-form-field>
+
   <mat-list-item *ngFor="let user of userRows$ | async">
     <mat-icon mat-list-icon>perm_identity</mat-icon>
     <h4 *ngIf="!user.editing"  mat-line>{{user.firstName}}</h4>
