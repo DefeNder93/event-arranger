@@ -19,5 +19,6 @@ export interface AddState {
 }
 
 export interface UserState extends EntityState<User> {
-  editing_ids: string[]
+  editing_ids: string[],
+  searchQuery: string;
 }

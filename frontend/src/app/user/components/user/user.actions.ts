@@ -5,6 +5,7 @@ export enum UserActionTypes {
   ADD = '[User] Add',
   UPDATE = '[User] Update',
   DELETE = '[User] Delete',
+  SEARCH = '[User] Search',
   TOGGLE_EDIT_STATE = '[User] Toggle Edit State'
 }
 
@@ -28,6 +29,11 @@ export class ActionUserToggleEditState implements Action {
   constructor(readonly payload: { id: string }) {}
 }
 
-export type UserActions = ActionUserAdd | ActionUserDelete | ActionUserToggleEditState | ActionUserUpdate;
+export class ActionUserSearchUpdate implements Action {
+  readonly type = UserActionTypes.SEARCH;
+  constructor(readonly payload: { query: string }) {}
+}
+
+export type UserActions = ActionUserAdd | ActionUserDelete | ActionUserToggleEditState | ActionUserUpdate | ActionUserSearchUpdate;
 
 

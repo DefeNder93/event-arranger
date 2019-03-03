@@ -9,6 +9,7 @@ export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({});
 export const initialState: UserState = userAdapter.getInitialState({
   ids: ['1', '2', '3'],
   editing_ids: [],
+  searchQuery: '',
   entities: {
     '1': {
       id: '1',
@@ -58,6 +59,12 @@ export function userReducer(
       return {
         ...state,
         editing_ids: toggleEditingIds(action.payload.id, state.editing_ids)
+      };
+
+    case UserActionTypes.SEARCH:
+      return {
+        ...state,
+        searchQuery: action.payload.query
       };
 
     default:

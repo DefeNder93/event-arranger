@@ -17,3 +17,8 @@ export const selectEditingIds = createSelector(
   selectUser,
   (state: UserFeatureState) => state.users.editing_ids
 );
+
+export const selectSearchQuery = createSelector(
+  selectUser,
+  (state: UserFeatureState) => state.users.searchQuery
+);
