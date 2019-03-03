@@ -1,10 +1,16 @@
 import {ChangeDetectionStrategy, Component, OnInit, OnDestroy} from '@angular/core';
 import {Observable} from "rxjs/internal/Observable";
-import {User, UserRow} from "../../models/user.model";
+import {User, UserRow} from "../../../core/models/user.model";
 import {State} from "../../user.state";
 import {select, Store} from "@ngrx/store";
 import {selectAllUsers, selectEditingIds, selectSearchQuery} from "./user.selectors";
-import {ActionUserDelete, ActionUserSearchUpdate, ActionUserToggleEditState, ActionUserUpdate} from "./user.actions";
+import {
+  ActionUserDelete,
+  ActionUserFetch,
+  ActionUserSearchUpdate,
+  ActionUserToggleEditState,
+  ActionUserUpdate
+} from "./user.actions";
 import {map, distinctUntilChanged, debounceTime, take, takeUntil} from "rxjs/operators";
 import {FormBuilder, FormControl} from "@angular/forms";
 import {combineLatest, ReplaySubject} from 'rxjs';
@@ -34,6 +40,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.store.dispatch(new ActionUserFetch())
   }
 
   ngOnDestroy() {

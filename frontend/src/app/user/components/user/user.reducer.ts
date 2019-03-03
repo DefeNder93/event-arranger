@@ -1,38 +1,14 @@
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
-
-import {User, UserState} from "../../models/user.model";
+import {User, UserState} from "../../../core/models/user.model";
 import {UserActions, UserActionTypes} from "./user.actions";
-
 
 export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({});
 
 export const initialState: UserState = userAdapter.getInitialState({
-  ids: ['1', '2', '3'],
+  ids: [],
   editing_ids: [],
   searchQuery: '',
-  entities: {
-    '1': {
-      id: '1',
-      firstName: 'Alex',
-      lastName: 'K',
-      password: '1111',
-      email: 'alex@eddf.df'
-    },
-    '2': {
-      id: '2',
-      firstName: 'Max',
-      lastName: 'K',
-      password: '1111',
-      email: 'max@eddf.df'
-    },
-    '3': {
-      id: '3',
-      firstName: 'Bob',
-      lastName: 'F',
-      password: '1111',
-      email: 'bob@eddf.df'
-    }
-  }
+  entities: {}
 });
 
 const toggleEditingIds = (id, editing_ids) => {
@@ -46,6 +22,9 @@ export function userReducer(
   action: UserActions
 ): UserState {
   switch (action.type) {
+    case UserActionTypes.LOAD:
+      return userAdapter.upsertMany(action.payload.users, state);
+
     case UserActionTypes.ADD:
       return userAdapter.upsertOne(action.payload.user, state);
 

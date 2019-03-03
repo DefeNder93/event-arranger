@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import {User} from "../../models/user.model";
+import {User} from "../../../core/models/user.model";
 
 export enum AddActionTypes {
   UPDATE = '[Add User] Update',
