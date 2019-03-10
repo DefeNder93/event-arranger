@@ -14,6 +14,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {SimpleNotificationsModule} from 'angular2-notifications';
 import { EffectsModule } from '@ngrx/effects';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,7 +43,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     SimpleNotificationsModule.forRoot(),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,12 +7,12 @@ const routes: Routes = [
     loadChildren: './user/user.module#UserModule'
   },
   {
-    path: 'calendar',
-    loadChildren: './calendar/calendar.module#CalendarModule'
+    path: 'booking',
+    loadChildren: './booking/booking.module#BookingModule'
   },
   {
     path: '**',
-    redirectTo: 'calendar'
+    redirectTo: 'booking'
   }
 ];
 
