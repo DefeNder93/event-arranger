@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
-import { AddComponent } from './add/add.component';
-import { ListComponent } from './list/list.component';
+import { AddComponent } from './components/add/add.component';
+import { UserComponent } from './components/user/user.component';
+import {SharedModule} from "../shared/shared.module";
+import {TranslateModule} from "@ngx-translate/core";
+import {StoreModule} from "@ngrx/store";
+import { EffectsModule } from '@ngrx/effects';
+import {FEATURE_NAME, reducers} from "./user.state";
+import {UserEffects} from "./user.effects";
 
 @NgModule({
-  declarations: [AddComponent, ListComponent],
+  declarations: [AddComponent, UserComponent],
   imports: [
-    CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule,
+    TranslateModule.forChild(),
+    StoreModule.forFeature(FEATURE_NAME, reducers),
+    EffectsModule.forFeature([
+      UserEffects
+    ])
   ]
 })
 export class UserModule { }

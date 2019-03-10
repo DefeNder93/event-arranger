@@ -1,0 +1,9 @@
+{
+  "forms": {
+    "required": "{{name}} is required",
+    "maxlength": "{{name}} can't be longer than {{maxlength}} characters",
+    "invalid-email": "{{name}} is invalid"
+  },
+  "COMMON": {
+  }
+}

@@ -1,0 +1,43 @@
+<form [formGroup]="userForm" (ngSubmit)="add()">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="First Name" formControlName="firstName">
+      <mat-error *ngIf="invalid('firstName')">
+        <app-required-msg name="First Name" field="firstName" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="First Name" field="firstName" maxlength="30" [form]="userForm"></app-maxlength-msg>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" formControlName="lastName">
+      <mat-error *ngIf="invalid('lastName')">
+        <app-required-msg name="Last Name" field="lastName" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="Last Name" field="lastName" maxlength="30" [form]="userForm"></app-maxlength-msg>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="invalid('email')">
+        <app-invalid-email-msg [form]="userForm"></app-invalid-email-msg>
+        <app-required-msg name="Email" field="email" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="Email" field="email" maxlength="20" [form]="userForm"></app-maxlength-msg>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" formControlName="password">
+      <mat-error *ngIf="invalid('password')">
+        <app-required-msg name="Password" field="password" [form]="userForm"></app-required-msg>
+        <app-maxlength-msg name="Password" field="password" maxlength="20" [form]="userForm"></app-maxlength-msg>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="EA-FormButtons">
+    <button type="submit" mat-raised-button color="accent">Add</button>
+    <button type="reset" mat-raised-button (click)="reset()">Reset</button>
+  </div>
+</form>
