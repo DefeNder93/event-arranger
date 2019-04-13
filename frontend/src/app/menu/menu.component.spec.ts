@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 
 import { MenuComponent } from './menu.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -26,6 +27,7 @@ describe('MenuComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        RouterTestingModule
       ]
     }).compileComponents();
   }));

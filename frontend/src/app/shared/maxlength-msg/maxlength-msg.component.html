@@ -1,1 +1,1 @@
-<ng-container *ngIf="form.get(field).errors['maxlength']">{{ 'forms.maxlength' | translate:{name: name, maxlength: maxlength} }}</ng-container>
+<ng-container *ngIf="form.get(field)?.errors['maxlength']">{{ 'forms.maxlength' | translate:{name: name, maxlength: maxlength} }}</ng-container>

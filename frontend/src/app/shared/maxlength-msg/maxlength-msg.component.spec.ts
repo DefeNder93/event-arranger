@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MaxlengthMsgComponent } from './maxlength-msg.component';
+import {CommonModule} from "@angular/common";
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {TranslateModule} from "@ngx-translate/core";
 
 describe('MaxlengthMsgComponent', () => {
   let component: MaxlengthMsgComponent;
@@ -8,7 +11,13 @@ describe('MaxlengthMsgComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaxlengthMsgComponent ]
+      declarations: [ MaxlengthMsgComponent ],
+      imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateModule.forChild()
+      ]
     })
     .compileComponents();
   }));

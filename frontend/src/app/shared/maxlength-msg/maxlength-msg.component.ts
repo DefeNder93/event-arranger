@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-maxlength-msg',
@@ -8,14 +8,19 @@ import {FormGroup} from "@angular/forms";
 })
 export class MaxlengthMsgComponent implements OnInit {
 
-  @Input() form: FormGroup;
+  @Input() form: FormGroup = this.getDefaultFormGroup();
   @Input() name: string;
   @Input() field: string;
   @Input() maxlength: string;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }
+
+  private getDefaultFormGroup () {
+    return this.fb.group({email: ['', [Validators.email, Validators.required, Validators.maxLength(30)]]});
+  }
+
 
 }

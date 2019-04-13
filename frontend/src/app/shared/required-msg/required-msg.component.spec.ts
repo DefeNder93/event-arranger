@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RequiredMsgComponent } from './required-msg.component';
+import {CommonModule} from "@angular/common";
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {TranslateModule} from "@ngx-translate/core";
 
 describe('RequiredMsgComponent', () => {
   let component: RequiredMsgComponent;
@@ -8,7 +11,13 @@ describe('RequiredMsgComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RequiredMsgComponent ]
+      declarations: [ RequiredMsgComponent ],
+      imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateModule.forChild()
+      ]
     })
     .compileComponents();
   }));

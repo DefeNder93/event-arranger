@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-invalid-email-msg',
@@ -8,13 +8,17 @@ import {FormGroup} from "@angular/forms";
 })
 export class InvalidEmailMsgComponent implements OnInit {
 
-  @Input() form: FormGroup;
+  @Input() form: FormGroup = this.getDefaultFormGroup();
   @Input() name = 'Email';
   @Input() field = 'email';
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  private getDefaultFormGroup () {
+    return this.fb.group({email: ['', [Validators.email, Validators.required, Validators.maxLength(30)]]});
   }
 
 }

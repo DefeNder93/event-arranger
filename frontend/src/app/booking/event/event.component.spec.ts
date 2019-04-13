@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EventComponent } from './event.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import {CommonModule} from '@angular/common';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('EventComponent', () => {
   let component: EventComponent;
@@ -8,7 +13,16 @@ describe('EventComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventComponent ]
+      declarations: [ EventComponent ],
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        NoopAnimationsModule,
+        CalendarModule.forRoot({
+          provide: DateAdapter,
+          useFactory: adapterFactory
+        })
+      ]
     })
     .compileComponents();
   }));
