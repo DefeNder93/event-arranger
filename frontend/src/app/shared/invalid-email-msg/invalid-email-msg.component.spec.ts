@@ -3,7 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InvalidEmailMsgComponent } from './invalid-email-msg.component';
 import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateModule} from "@ngx-translate/core";
+import 'jest';
 
 describe('InvalidEmailMsgComponent', () => {
   let component: InvalidEmailMsgComponent;
@@ -28,7 +29,7 @@ describe('InvalidEmailMsgComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 });

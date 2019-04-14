@@ -18,6 +18,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {APP_BASE_HREF} from '@angular/common';
+import 'jest';
 
 
 describe('AppComponent', () => {
@@ -53,7 +54,7 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  test('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();

@@ -4,6 +4,7 @@ import { MaxlengthMsgComponent } from './maxlength-msg.component';
 import {CommonModule} from "@angular/common";
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {TranslateModule} from "@ngx-translate/core";
+import 'jest';
 
 describe('MaxlengthMsgComponent', () => {
   let component: MaxlengthMsgComponent;
@@ -28,7 +29,7 @@ describe('MaxlengthMsgComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 });

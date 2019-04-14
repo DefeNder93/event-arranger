@@ -11,6 +11,7 @@ import {
 
 import { MenuComponent } from './menu.component';
 import {RouterTestingModule} from '@angular/router/testing';
+import 'jest';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -38,7 +39,7 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should compile', () => {
+  test('should compile', () => {
     expect(component).toBeTruthy();
   });
 });

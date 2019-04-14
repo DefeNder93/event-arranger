@@ -9,6 +9,7 @@ import {StoreModule} from '@ngrx/store';
 import {metaReducers} from "../../../reducers";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import 'jest';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -35,7 +36,7 @@ describe('UserComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 });
