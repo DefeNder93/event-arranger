@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {select, Store} from "@ngrx/store";
 import {take} from "rxjs/operators";
 import {ActionAddReset, ActionAddUpdate} from "./add.actions";
@@ -7,6 +7,7 @@ import {State} from "../../user.state";
 import {selectUserState} from "./add.selectors";
 import {ActionUserAdd} from "../user/user.actions";
 import { v4 as uuid } from 'uuid';
+import {Utils} from "../../../core/utils.service";
 
 @Component({
   selector: 'app-add',
@@ -23,10 +24,7 @@ export class AddComponent implements OnInit {
     email: ['', [Validators.email, Validators.required, Validators.maxLength(30)]]
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store<State>
-  ) { }
+  constructor(private fb: FormBuilder, private store: Store<State>, private utils: Utils) { }
 
   ngOnInit() {
     this.store
@@ -48,21 +46,21 @@ export class AddComponent implements OnInit {
 
   reset = () => {
     this.userForm.reset();
-    this.resetForm(this.userForm);
+    this.utils.resetForm(this.userForm);
     this.userForm.clearValidators();
     this.store.dispatch(new ActionAddReset());
   };
 
   // TODO move to utils
-  private resetForm(formGroup: FormGroup) {
-    let control: AbstractControl = null;
-    formGroup.reset();
-    formGroup.markAsUntouched();
-    Object.keys(formGroup.controls).forEach((name) => {
-      control = formGroup.controls[name];
-      control.setErrors(null);
-    });
-  }
+  // private resetForm(formGroup: FormGroup) {
+  //   let control: AbstractControl = null;
+  //   formGroup.reset();
+  //   formGroup.markAsUntouched();
+  //   Object.keys(formGroup.controls).forEach((name) => {
+  //     control = formGroup.controls[name];
+  //     control.setErrors(null);
+  //   });
+  // }
 
   invalid = (field: string) => this.userForm.get(field).invalid;
 

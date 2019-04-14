@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddComponent } from './add.component';
 import {FEATURE_NAME, reducers} from "../../user.state";
 import {SharedModule} from "../../../shared/shared.module";
-import {UserEffects} from "../../user.effects";
 import {TranslateModule} from '@ngx-translate/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
