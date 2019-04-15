@@ -1,7 +1,7 @@
 import {EntityState} from "@ngrx/entity";
 import {FormGroup} from "@angular/forms";
 
-export interface User {
+export class User {
   id: string;
   firstName: string;
   lastName: string;
@@ -9,7 +9,7 @@ export interface User {
   email: string;
 }
 
-export interface UserRow extends User {
+export class UserRow extends User {
   editing: boolean;
   editForm: FormGroup;
 }

@@ -51,17 +51,6 @@ export class AddComponent implements OnInit {
     this.store.dispatch(new ActionAddReset());
   };
 
-  // TODO move to utils
-  // private resetForm(formGroup: FormGroup) {
-  //   let control: AbstractControl = null;
-  //   formGroup.reset();
-  //   formGroup.markAsUntouched();
-  //   Object.keys(formGroup.controls).forEach((name) => {
-  //     control = formGroup.controls[name];
-  //     control.setErrors(null);
-  //   });
-  // }
-
   invalid = (field: string) => this.userForm.get(field).invalid;
 
 }

@@ -1,18 +1,18 @@
 import {ChangeDetectionStrategy, Component, OnInit, OnDestroy} from '@angular/core';
-import {Observable} from "rxjs/internal/Observable";
-import {User, UserRow} from "../../../core/models/user.model";
-import {State} from "../../user.state";
-import {select, Store} from "@ngrx/store";
-import {selectAllUsers, selectEditingIds, selectSearchQuery} from "./user.selectors";
+import {Observable} from 'rxjs/internal/Observable';
+import {User, UserRow} from '../../../core/models/user.model';
+import {State} from '../../user.state';
+import {select, Store} from '@ngrx/store';
+import {selectAllUsers, selectEditingIds, selectSearchQuery} from './user.selectors';
 import {
   ActionUserDelete,
   ActionUserFetch,
   ActionUserSearchUpdate,
   ActionUserToggleEditState,
   ActionUserUpdate
-} from "./user.actions";
-import {map, distinctUntilChanged, debounceTime, take, takeUntil} from "rxjs/operators";
-import {FormBuilder, FormControl} from "@angular/forms";
+} from './user.actions';
+import {map, distinctUntilChanged, debounceTime, take, takeUntil} from 'rxjs/operators';
+import {FormBuilder, FormControl} from '@angular/forms';
 import {combineLatest, ReplaySubject} from 'rxjs';
 
 @Component({
@@ -23,7 +23,7 @@ import {combineLatest, ReplaySubject} from 'rxjs';
 })
 export class UserComponent implements OnInit, OnDestroy {
 
-  userRows$ : Observable<UserRow[]>;
+  userRows$: Observable<UserRow[]>;
   destroy$ = new ReplaySubject(1);
   search = new FormControl('');
   search$ = this.search.valueChanges.pipe(
@@ -40,11 +40,11 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.dispatch(new ActionUserFetch())
+    this.store.dispatch(new ActionUserFetch());
   }
 
   ngOnDestroy() {
-    this.destroy$.next()
+    this.destroy$.next();
   }
 
   delete = (user: UserRow) => this.store.dispatch(new ActionUserDelete({ id: user.id }));
@@ -84,10 +84,10 @@ export class UserComponent implements OnInit, OnDestroy {
 
   private registerSearchSaving = () => this.search$
     .pipe(takeUntil(this.destroy$))
-    .subscribe(query => this.store.dispatch(new ActionUserSearchUpdate({query: query})));
+    .subscribe(query => this.store.dispatch(new ActionUserSearchUpdate({query})))
 
   private loadFirstSearchValue = () => this.searchQuery$
     .pipe(take(1))
-    .subscribe(query => this.search.setValue(query));
+    .subscribe(query => this.search.setValue(query))
 
 }

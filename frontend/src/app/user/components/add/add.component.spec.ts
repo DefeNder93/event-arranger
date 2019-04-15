@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddComponent } from './add.component';
-import {FEATURE_NAME, reducers} from "../../user.state";
-import {SharedModule} from "../../../shared/shared.module";
+import {FEATURE_NAME, reducers} from '../../user.state';
+import {SharedModule} from '../../../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import { RouterTestingModule } from '@angular/router/testing';
-import {metaReducers} from "../../../reducers";
+import {metaReducers} from '../../../reducers';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'jest';
 
