@@ -1,5 +1,5 @@
 import { ActionReducer } from '@ngrx/store';
-import {AppState} from "./index";
+import {AppState} from './index';
 
 export function debug(
   reducer: ActionReducer<AppState>
@@ -7,7 +7,7 @@ export function debug(
   return function(state, action) {
     const newState = reducer(state, action);
     console.log(`[DEBUG] action: ${action.type}`, {
-      payload: (<any>action).payload,
+      payload: (action as any).payload,
       oldState: state,
       newState
     });

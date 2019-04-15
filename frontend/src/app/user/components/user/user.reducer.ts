@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
-import {User, UserState} from "../../../core/models/user.model";
-import {UserActions, UserActionTypes} from "./user.actions";
+import {User, UserState} from '../../../core/models/user.model';
+import {UserActions, UserActionTypes} from './user.actions';
 
 export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>({});
 
@@ -15,7 +15,7 @@ const toggleEditingIds = (id, editing_ids) => {
   const out = [...editing_ids];
   out.indexOf(id) === -1 ? out.push(id) : out.splice(editing_ids.indexOf(id), 1);
   return out;
-}
+};
 
 export function userReducer(
   state: UserState = initialState,

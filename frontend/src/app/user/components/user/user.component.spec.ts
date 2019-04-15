@@ -11,6 +11,8 @@ import {User, UserRow} from '../../../core/models/user.model';
 import {MockStore, provideMockStore} from '@ngrx/store/testing';
 import {Store, StoreModule} from '@ngrx/store';
 import {metaReducers} from '../../../reducers';
+import {UserActionTypes} from './user.actions';
+import {take} from 'rxjs/operators';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -21,9 +23,10 @@ describe('UserComponent', () => {
     },
     users: {
       editing_ids: ['3'],
+      ids: ['3'],
       entities: {
-        3: {
-          id: 3
+        '3': {
+          id: '3'
         }
       },
       searchQuery: ''
@@ -65,14 +68,17 @@ describe('UserComponent', () => {
     expect(userRow.editForm).toBeDefined();
   });
 
-  test('should start editing', () => {
+  test('should delete user', (done) => {
     const userRow = new UserRow();
     userRow.id = '3';
-    // component.delete(userRow);
-    // expect(store.dispatch).toHaveBeenCalledWith({payload: {id: '3'}, type: UserActionTypes.DELETE});
+    component.delete(userRow);
+    expect(store.dispatch).toHaveBeenCalledWith({payload: {id: '3'}, type: UserActionTypes.DELETE});
 
-    component.userRows$.subscribe(data => {
-      expect(data.length).toBe(1);
+    store.pipe(take(1)).subscribe(state => {
+      console.log('checking state', state);
+      expect(state.users.ids[0]).toBe('3');
+      done();
     });
   });
+
 });
